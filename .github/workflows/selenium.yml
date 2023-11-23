@@ -1,0 +1,30 @@
+name: Selenium Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Download ChromeDriver
+      run: |
+        mkdir -p $HOME/drivers
+        curl -L https://chromedriver.storage.googleapis.com/$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_win32.zip -o $HOME/drivers/chromedriver_win32.zip
+        unzip -o $HOME/drivers/chromedriver_win32.zip -d $HOME/drivers
+        echo "C:\\Users\\runneradmin\\drivers" >> $GITHUB_PATH
+
+    - name: Run Selenium Tests
+      run: python selenium_tests/test_script.py
