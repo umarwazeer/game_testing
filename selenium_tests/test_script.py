@@ -27,7 +27,9 @@ try:
     )
 
     # Find the file input field using its name attribute
-    file_input = driver.find_element(By.NAME, 'file')
+    file_input = WebDriverWait(driver, 120).until(
+        EC.presence_of_element_located((By.NAME, 'file'))
+    )
 
     # Unhide the file input field using JavaScript
     driver.execute_script("arguments[0].style.display = 'block';", file_input)
