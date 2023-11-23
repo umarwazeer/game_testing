@@ -73,13 +73,14 @@ try:
     # input_field.send_keys("exampleword")
     # input_field.send_keys(Keys.RETURN)
 
-    # Example: Interact with another element after submitting the word
-    result_message = WebDriverWait(driver, 10).until(
+    # Wait for document ready state
+
+    # Wait for the result message element
+    result_message = WebDriverWait(driver, 60).until(
         EC.visibility_of_element_located((By.ID, 'result-message'))
     )
-    print("Result Message:", result_message.text)
 
-    # Example: Click a button or interact with other elements
+    print("Result Message:", result_message.text)
 
 finally:
     # Add any cleanup steps or close the browser window after testing
