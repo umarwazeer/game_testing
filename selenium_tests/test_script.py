@@ -5,14 +5,25 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
 
+
+
 # Set the path to the chromedriver executable
-chromedriver_path = r'C:\Users\Umar khan\Downloads\Compressed\chromedriver_win32\chromedriver.exe'
+chromedriver_path = r'C:\Users\Umar khan\Downloads\Compressed\chromedriver_win32\chromedriver.exe'  # Update with the correct path
+options = webdriver.ChromeOptions()
+options.binary_location = '/usr/bin/google-chrome'  # Update with the correct path
+
+# Create the WebDriver with options
+driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
+
+
+# Set the path to the chromedriver executable
+# chromedriver_path = r'C:\Users\Umar khan\Downloads\Compressed\chromedriver_win32\chromedriver.exe'
 
 # Set the PATH environment variable
 os.environ['PATH'] += ';' + chromedriver_path
 
 # Create the WebDriver
-driver = webdriver.Chrome()
+# driver = webdriver.Chrome()
 
 # Open the game URL
 driver.get("https://word-corners.nodehill.se/")
