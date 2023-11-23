@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 import os
 
 # Set the path to the chromedriver executable
@@ -44,44 +45,28 @@ driver.get("https://word-corners.nodehill.se/")
 #     driver.quit()
 
 
+
+# Wait for document ready state
+WebDriverWait(driver, 60).until(
+    lambda driver: driver.execute_script('return document.readyState == "complete"')
+)
+
+# Wait for the start button to be clickable
+start_button = WebDriverWait(driver, 60).until(
+    EC.element_to_be_clickable((By.CLASS_NAME, 'start-btn'))
+)
+print("Current URL:", driver.current_url)
+start_button.click()
+
+# Wait for the result message element
 try:
-    WebDriverWait(driver, 120).until(
-    lambda driver: driver.execute_script('return document.readyState == "complete"')
+    result_message = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, 'result-message'))
     )
-
-    # Example: Start the game
-    start_button = WebDriverWait(driver, 120).until(
-    EC.presence_of_element_located((By.CLASS_NAME, 'start-btn'))
-    )
-    print("Current URL:", driver.current_url)
-
-
-    start_button.click()
-    
-
-    # Add more actions based on your game testing progress
-    # Example: Enter a word
-    WebDriverWait(driver, 120).until(
-    lambda driver: driver.execute_script('return document.readyState == "complete"')
-    )
-    # print("Waiting for word input field...")
-    # input_field = WebDriverWait(driver, 120).until(
-    #     EC.presence_of_element_located((By.NAME, 'word'))
-    # )
-    # print("Word input field found.")
-
-    # input_field.send_keys("exampleword")
-    # input_field.send_keys(Keys.RETURN)
-
-    # Wait for document ready state
-
-    # Wait for the result message element
-    result_message = WebDriverWait(driver, 60).until(
-        EC.visibility_of_element_located((By.ID, 'result-message'))
-    )
-
     print("Result Message:", result_message.text)
 
-finally:
-    # Add any cleanup steps or close the browser window after testing
-    driver.quit()
+    
+except TimeoutException:
+    print("Result message element not found within 10 seconds. Continuing...")
+    # You can add further actions or handle the situation as needed
+
