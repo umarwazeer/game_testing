@@ -17,8 +17,8 @@ jobs:
 
     - name: Install Dependencies
       run: |
-         pip install -r path/to/requirements.txt
-
+        pip install -r selenium_tests/requirements.txt
+        
     - name: Download ChromeDriver
       run: |
         mkdir -p $HOME/drivers
