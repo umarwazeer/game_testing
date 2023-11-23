@@ -29,7 +29,7 @@ try:
 
     # Add more actions based on your game testing progress
     # Example: Enter a word
-    input_field = WebDriverWait(driver, 60).until(
+    input_field = WebDriverWait(driver, 120).until(
         EC.presence_of_element_located((By.NAME, 'word'))
     )
     input_field.send_keys("exampleword")
