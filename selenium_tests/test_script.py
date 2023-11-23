@@ -22,9 +22,10 @@ driver.get("https://word-corners.nodehill.se/")
 
 try:
     # Example: Start the game
-    start_button = WebDriverWait(driver, 10).until(
+    start_button = WebDriverWait(driver, 120).until(
         EC.element_to_be_clickable((By.CLASS_NAME, 'start-btn'))
     )
+
     start_button.click()
 
     # Add more actions based on your game testing progress
