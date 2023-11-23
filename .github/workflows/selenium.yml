@@ -19,8 +19,6 @@ jobs:
       run: |
         pip install -r selenium_tests/requirements.txt
         pip install selenium
-        apt-get update
-        
 
 
     - name: Download ChromeDriver
