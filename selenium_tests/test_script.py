@@ -20,28 +20,28 @@ driver = webdriver.Chrome(options=options)
 # Open the game URL
 driver.get("https://word-corners.nodehill.se/")
 
-try:
-    # Example: Wait for document ready state
-    WebDriverWait(driver, 120).until(
-        lambda driver: driver.execute_script('return document.readyState == "complete"')
-    )
+# try:
+#     # Example: Wait for document ready state
+#     WebDriverWait(driver, 120).until(
+#         lambda driver: driver.execute_script('return document.readyState == "complete"')
+#     )
 
-    # Find the file input field using its name attribute
-    file_input = WebDriverWait(driver, 120).until(
-        EC.presence_of_element_located((By.NAME, 'file'))
-    )
+#     # Find the file input field using its name attribute
+#     file_input = WebDriverWait(driver, 120).until(
+#         EC.presence_of_element_located((By.NAME, 'file'))
+#     )
 
-    # Unhide the file input field using JavaScript
-    driver.execute_script("arguments[0].style.display = 'block';", file_input)
+#     # Unhide the file input field using JavaScript
+#     driver.execute_script("arguments[0].style.display = 'block';", file_input)
 
-    # Set the file path and send keys to the file input field
-    file_input.send_keys("path/to/your/file.txt")
+#     # Set the file path and send keys to the file input field
+#     file_input.send_keys("path/to/your/file.txt")
 
-    # Continue with other actions based on your game testing progress
+#     # Continue with other actions based on your game testing progress
 
-finally:
-    # Add any cleanup steps or close the browser window after testing
-    driver.quit()
+# finally:
+#     # Add any cleanup steps or close the browser window after testing
+#     driver.quit()
 
 
 try:
