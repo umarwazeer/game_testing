@@ -6,10 +6,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import os
 
-# Set the path to the chromedriver executable
+
 chromedriver_path = r'C:\Users\Umar khan\Downloads\Compressed\chromedriver_win32\chromedriver.exe'
 
-# Set the PATH environment variable
+
 os.environ['PATH'] += ';' + chromedriver_path
 
 # Create the WebDriver
@@ -65,7 +65,7 @@ try:
     )
     print("Result Message:", result_message.text)
 
-    
+
 except TimeoutException:
     print("Result message element not found within 10 seconds. Continuing...")
     # You can add further actions or handle the situation as needed
