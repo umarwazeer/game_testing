@@ -15,7 +15,7 @@ os.environ['PATH'] += ';' + chromedriver_path
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
-driver = webdriver.Chrome(options=options, executable_path=chromedriver_path)
+driver = webdriver.Chrome(options=options)
 
 # Open the game URL
 driver.get("https://word-corners.nodehill.se/")
