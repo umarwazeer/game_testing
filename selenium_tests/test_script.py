@@ -12,7 +12,7 @@ print("PATH:", os.environ['PATH'])
 # Set the path to the chromedriver executable
 chromedriver_path = r'C:\Users\Umar khan\Downloads\Compressed\chromedriver_win32\chromedriver.exe'  # Update with the correct path
 chrome_options = webdriver.ChromeOptions()
-options.binary_location = '/usr/bin/google-chrome'  # Update with the correct path
+# options.binary_location = '/usr/bin/google-chrome'  # Update with the correct path
 
 # Create the WebDriver with options
 driver = webdriver.Chrome(options=chrome_options)
