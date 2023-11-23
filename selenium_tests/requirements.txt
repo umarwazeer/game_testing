@@ -1,0 +1,3 @@
+selenium==3.141.0
+python-version: 3.x
+ChromeDriver 114.0.5735.90
