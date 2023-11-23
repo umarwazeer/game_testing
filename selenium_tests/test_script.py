@@ -13,7 +13,7 @@ options = webdriver.ChromeOptions()
 options.binary_location = '/usr/bin/google-chrome'  # Update with the correct path
 
 # Create the WebDriver with options
-driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
+# driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
 
 
 # Set the path to the chromedriver executable
@@ -23,7 +23,7 @@ driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
 os.environ['PATH'] += ';' + chromedriver_path
 
 # Create the WebDriver
-# driver = webdriver.Chrome()
+driver = webdriver.Chrome()
 
 # Open the game URL
 driver.get("https://word-corners.nodehill.se/")
