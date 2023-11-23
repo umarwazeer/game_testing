@@ -23,10 +23,11 @@ driver.get("https://word-corners.nodehill.se/")
 try:
     WebDriverWait(driver, 120).until(
     lambda driver: driver.execute_script('return document.readyState == "complete"')
-)
+    )
+
     # Example: Start the game
     start_button = WebDriverWait(driver, 120).until(
-        EC.element_to_be_clickable((By.CLASS_NAME, 'start-btn'))
+    EC.presence_of_element_located((By.CLASS_NAME, 'start-btn'))
     )
     print("Current URL:", driver.current_url)
 
@@ -36,9 +37,15 @@ try:
 
     # Add more actions based on your game testing progress
     # Example: Enter a word
+    WebDriverWait(driver, 120).until(
+    lambda driver: driver.execute_script('return document.readyState == "complete"')
+    )
+    print("Waiting for word input field...")
     input_field = WebDriverWait(driver, 120).until(
         EC.presence_of_element_located((By.NAME, 'word'))
     )
+    print("Word input field found.")
+
     input_field.send_keys("exampleword")
     input_field.send_keys(Keys.RETURN)
 
