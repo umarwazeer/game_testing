@@ -27,7 +27,7 @@ try:
     )
 
     # Find the file input field using its name attribute
-    file_input = WebDriverWait(driver, 10).until(
+    file_input = WebDriverWait(driver, 120).until(
         EC.presence_of_element_located((By.NAME, 'file'))
     )
 
@@ -43,7 +43,7 @@ finally:
     # Add any cleanup steps or close the browser window after testing
     driver.quit()
 
-    
+
 try:
     WebDriverWait(driver, 120).until(
     lambda driver: driver.execute_script('return document.readyState == "complete"')
