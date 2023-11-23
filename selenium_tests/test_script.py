@@ -12,7 +12,10 @@ chromedriver_path = r'C:\Users\Umar khan\Downloads\Compressed\chromedriver_win32
 os.environ['PATH'] += ';' + chromedriver_path
 
 # Create the WebDriver
-driver = webdriver.Chrome()
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
+driver = webdriver.Chrome(options=options)
 
 # Open the game URL
 driver.get("https://word-corners.nodehill.se/")
